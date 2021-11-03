@@ -22,6 +22,10 @@ def main():
 
         # Computing results
         length = len(lines)
+        print()
+        print("--------------------------------------------------")
+        print()
+        print(f"{length} fingerprints have been compared :")
         ratio = (ok / length) * 100
         fp_amount = (false_pos / length) * 100
         fn_amount = (false_neg / length) * 100
