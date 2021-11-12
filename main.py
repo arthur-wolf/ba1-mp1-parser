@@ -10,15 +10,18 @@ def main():
         # Getting data
         for line in lines:
             splitted = line.split()
-            print(splitted[1] + " ~ " + splitted[3] + " / Expected : " + splitted[6] + " - Computed : " + splitted[9])
+            print(splitted[0] + " : " + splitted[3] + " ~ " + splitted[5]
+                  + " / Expected : " + splitted[8] + " - Computed : " + splitted[11])
 
             # Processing data
-            if splitted[6] == splitted[9]:
+            if splitted[8] == splitted[11]:
                 ok += 1
-            elif splitted[6] == "true" and splitted[9] == "false":
-                false_neg += 1
-            elif splitted[6] == "false" and splitted[9] == "true":
+            elif (splitted[8] == "false" or splitted[8] == "false.") and \
+                    (splitted[11] == "true" or splitted[11] == "true."):  # false positives
                 false_pos += 1
+            elif (splitted[8] == "true" or splitted[8] == "true.") and \
+                    (splitted[11] == "false" or splitted[11] == "false."):  # false negatives
+                false_neg += 1
 
         # Computing results
         length = len(lines)
